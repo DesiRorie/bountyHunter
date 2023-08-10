@@ -18,6 +18,7 @@ struct GameDisplayView: View {
                 if !clickToPlayIsNotShowing{
                     Text("Start Game")
                         .bold()
+                        .font(.custom("PressStart2P-Regular", size: 15))
                         .foregroundColor(.white)
                         .scaleEffect(isScaling ? 1.5 : 1)
                         .onTapGesture {

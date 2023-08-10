@@ -12,25 +12,31 @@ struct OnboardingView: View {
         NavigationStack {
             ZStack {
                 Color("MainColor")
+                VStack{
                     VStack{
-                        VStack{
-                            Text("Bounty Hunter")
-                                .foregroundColor(Color("CallToActionColor"))
-                                .font(.largeTitle)
-                                .bold()
-                        }
-                        Spacer()
+                        Text("Bounty Hunter")
+                            .foregroundColor(Color("CallToActionColor"))
+                            .font(.custom("PressStart2P-Regular", size: 30))
+                            .offset(y:20)
                             
-                        VStack{
-                            GameDisplayView()
-                        }
-                        Spacer().frame(height: 300)
+                            .bold()
                     }
-                    .offset(y:50)
+                    Spacer()
+                    
+                    VStack{
+                        GameDisplayView()
+                    }
+                    Spacer().frame(height: 300)
+                }
+                .offset(y:50)
                 
             }.ignoresSafeArea(.all)
+            
+            
         }
+
     }
+    
 }
 
 struct OnboardingView_Previews: PreviewProvider {

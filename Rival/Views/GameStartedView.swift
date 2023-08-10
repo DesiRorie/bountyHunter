@@ -8,41 +8,53 @@
 import SwiftUI
 
 struct GameStartedView: View {
-    @State var pathChosen:Bool = false
+    @StateObject var viewModel = BountyHunterViewModel()
     var body: some View {
-        
+        VStack{
+            if viewModel.pathWasChosen{
+                VStack{
+                    NavbarView(viewModel: viewModel).foregroundColor(.white)
+                    Spacer().frame(height: 400)
+                }
+            
+        }
+        else{
             VStack{
                 VStack{
-                    Text("Welcome to Bounty Hunter") .font(.title2)
-                    Text("Which path would you like to take?") .font(.title3)
+                    Text("Welcome to Bounty Hunter") .font(.custom("PressStart2P-Regular", size: 15))
+                    Spacer().frame(height: 10)
+                    Text("Choose Your Path") .font(.custom("PressStart2P-Regular", size: 12.5))
                 }
                 .padding()
                 .foregroundColor(.white)
                 Spacer()
                 VStack{
-                    if pathChosen {
+                    if viewModel.pathWasChosen {
                         Text("Chosen")
                     }
                     
                     Button("Dragon King") {
-                        pathChosen = true
-                    }
+                        viewModel.pathWasChosen = true
+                        viewModel.chosenPath = 1
+                    }.font(.custom("PressStart2P-Regular", size: 15))
                     .frame(minWidth: 200)
                     .padding()
                     .background(Color("CallToActionColor"))
                     .cornerRadius(25)
                     
                     Button("Android 115") {
-                        
-                    }
+                        viewModel.pathWasChosen = true
+                        viewModel.chosenPath = 2
+                    }.font(.custom("PressStart2P-Regular", size: 15))
                     .frame(minWidth: 200)
                     .padding()
                     .background(Color("CallToActionColor"))
                     .cornerRadius(25)
                     
                     Button("Cowboy X") {
-                        
-                    }
+                        viewModel.pathWasChosen = true
+                        viewModel.chosenPath = 3
+                    }.font(.custom("PressStart2P-Regular", size: 15))
                     .frame(minWidth: 200)
                     .padding()
                     .background(Color("CallToActionColor"))
@@ -50,7 +62,10 @@ struct GameStartedView: View {
                 }.bold()
                     .foregroundColor(.black)
                 Spacer()
-            
+            }
+            }
+        }.onChange(of: viewModel.pathWasChosen) { newValue in
+            print("changed")
         }
     }
 }

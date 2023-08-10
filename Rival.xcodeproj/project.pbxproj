@@ -18,6 +18,12 @@
 		C2AC0B892A81D39700B26F47 /* GameStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B882A81D39700B26F47 /* GameStartedView.swift */; };
 		C2AC0B8B2A81DC6C00B26F47 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B8A2A81DC6C00B26F47 /* TestView.swift */; };
 		C2AC0B8F2A81FA1B00B26F47 /* BountyHunterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B8E2A81FA1A00B26F47 /* BountyHunterViewModel.swift */; };
+		C2AC0B912A827A5A00B26F47 /* NavbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B902A827A5A00B26F47 /* NavbarView.swift */; };
+		C2AC0B932A82A97E00B26F47 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B922A82A97E00B26F47 /* ShopView.swift */; };
+		C2AC0B962A82ABA900B26F47 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C2AC0B952A82ABA900B26F47 /* PressStart2P-Regular.ttf */; };
+		C2AC0B992A82CB8200B26F47 /* WeaponsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B982A82CB8200B26F47 /* WeaponsView.swift */; };
+		C2AC0B9B2A82CBA100B26F47 /* GoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B9A2A82CBA100B26F47 /* GoldView.swift */; };
+		C2AC0B9D2A82CBAE00B26F47 /* TravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B9C2A82CBAE00B26F47 /* TravelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +39,13 @@
 		C2AC0B882A81D39700B26F47 /* GameStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartedView.swift; sourceTree = "<group>"; };
 		C2AC0B8A2A81DC6C00B26F47 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		C2AC0B8E2A81FA1A00B26F47 /* BountyHunterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BountyHunterViewModel.swift; sourceTree = "<group>"; };
+		C2AC0B902A827A5A00B26F47 /* NavbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarView.swift; sourceTree = "<group>"; };
+		C2AC0B922A82A97E00B26F47 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		C2AC0B952A82ABA900B26F47 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
+		C2AC0B972A82ABFB00B26F47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C2AC0B982A82CB8200B26F47 /* WeaponsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponsView.swift; sourceTree = "<group>"; };
+		C2AC0B9A2A82CBA100B26F47 /* GoldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldView.swift; sourceTree = "<group>"; };
+		C2AC0B9C2A82CBAE00B26F47 /* TravelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +78,8 @@
 		C26EAB342A7B39330073CE63 /* Rival */ = {
 			isa = PBXGroup;
 			children = (
+				C2AC0B972A82ABFB00B26F47 /* Info.plist */,
+				C2AC0B942A82AB8800B26F47 /* Font */,
 				C26EAB4C2A7B43080073CE63 /* ViewModels */,
 				C26EAB4B2A7B43000073CE63 /* Models */,
 				C26EAB4A2A7B42F60073CE63 /* Views */,
@@ -93,6 +108,11 @@
 				C2AC0B862A81CB0E00B26F47 /* GameDisplayView.swift */,
 				C2AC0B882A81D39700B26F47 /* GameStartedView.swift */,
 				C2AC0B8A2A81DC6C00B26F47 /* TestView.swift */,
+				C2AC0B902A827A5A00B26F47 /* NavbarView.swift */,
+				C2AC0B922A82A97E00B26F47 /* ShopView.swift */,
+				C2AC0B982A82CB8200B26F47 /* WeaponsView.swift */,
+				C2AC0B9A2A82CBA100B26F47 /* GoldView.swift */,
+				C2AC0B9C2A82CBAE00B26F47 /* TravelView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -110,6 +130,14 @@
 				C2AC0B8E2A81FA1A00B26F47 /* BountyHunterViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C2AC0B942A82AB8800B26F47 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C2AC0B952A82ABA900B26F47 /* PressStart2P-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2AC0B962A82ABA900B26F47 /* PressStart2P-Regular.ttf in Resources */,
 				C26EAB3D2A7B39340073CE63 /* Preview Assets.xcassets in Resources */,
 				C26EAB3A2A7B39340073CE63 /* Assets.xcassets in Resources */,
 			);
@@ -182,14 +211,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2AC0B992A82CB8200B26F47 /* WeaponsView.swift in Sources */,
 				C2AC0B8F2A81FA1B00B26F47 /* BountyHunterViewModel.swift in Sources */,
+				C2AC0B9D2A82CBAE00B26F47 /* TravelView.swift in Sources */,
+				C2AC0B9B2A82CBA100B26F47 /* GoldView.swift in Sources */,
 				C2AC0B892A81D39700B26F47 /* GameStartedView.swift in Sources */,
 				C26EAB422A7B39340073CE63 /* Rival.xcdatamodeld in Sources */,
 				C26EAB3F2A7B39340073CE63 /* Persistence.swift in Sources */,
 				C26EAB382A7B39330073CE63 /* ContentView.swift in Sources */,
+				C2AC0B912A827A5A00B26F47 /* NavbarView.swift in Sources */,
 				C2AC0B8B2A81DC6C00B26F47 /* TestView.swift in Sources */,
 				C2AC0B852A81AF6100B26F47 /* OnboardingView.swift in Sources */,
 				C26EAB362A7B39330073CE63 /* RivalApp.swift in Sources */,
+				C2AC0B932A82A97E00B26F47 /* ShopView.swift in Sources */,
 				C2AC0B872A81CB0E00B26F47 /* GameDisplayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +356,7 @@
 				DEVELOPMENT_TEAM = GV2ZUHR4F2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rival/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -351,6 +386,7 @@
 				DEVELOPMENT_TEAM = GV2ZUHR4F2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rival/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

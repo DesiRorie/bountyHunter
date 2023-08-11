@@ -81,12 +81,20 @@ struct WeaponsView: View {
                                         Text("Amount - \(item.countOfItem)")
                                     }
                                     VStack{
+                                        Spacer().frame(height: 10)
                                         Button {
                                             viewModel.sellItem(item: item)
                                         } label: {
-                                            Text("SELL")
+                                            Text("SELL").foregroundColor(.red )
                                                 
                                         }
+                                        Spacer().frame(height: 20)
+                                        Button {
+                                            viewModel.useHealthItem(item: item)
+                                        } label: {
+                                            Text("USE").foregroundColor(Color("CallToActionColor"))
+                                        }
+                                        Spacer().frame(height: 10)
                                     }
                                 }
                                 Spacer().frame(height: 10)

@@ -26,7 +26,7 @@ struct OnboardingView: View {
                     VStack{
                         GameDisplayView()
                     }
-                    Spacer().frame(height: 300)
+                    Spacer().frame(height: 150)
                 }
                 .offset(y:50)
                 

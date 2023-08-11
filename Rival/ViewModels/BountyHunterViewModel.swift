@@ -17,6 +17,7 @@ struct WeaponInventoryItem: InventoryItem {
     var id = UUID()
     var price: Int
     var power: Int
+    var countOfItem = 1
 }
 
 struct HealthInventoryItem: InventoryItem {
@@ -27,19 +28,27 @@ struct HealthInventoryItem: InventoryItem {
     var countOfItem = 1
 }
 
-// for the add or sell function alter the amount of the health 
+protocol Villain{
+    var name:String{get}
+    var villainHealth: Int {get}
+    var power:Int {get
+    }
+}
 
-//
-//struct WeaponInventoryItem: Hashable{
-//    var name: String
-//    var price: Int
-//    var power: Int
-//}
-//struct HealthInventoryItem: Hashable{
-//    var name: String
-//    var price: Int
-//    var healthBoost: Int
-//}
+struct DragonKing: Villain {
+    var name = "Dragon King"
+    var villainHealth = 200
+    var power = 25
+    
+
+    mutating func attackPlayer(in viewModel: inout BountyHunterViewModel) {
+        let damage = min(power, viewModel.health)
+        viewModel.receiveAttack(damage: damage)
+        
+        print("Dragon King attacked the player for \(damage) damage!")
+    }
+}
+
 class BountyHunterViewModel: ObservableObject{
     init(){
         print("Game Model Started")
@@ -49,54 +58,98 @@ class BountyHunterViewModel: ObservableObject{
         print("Game Model Closed")
     }
     var gameIsStarted: Bool =  false
+    @Published var diceOutcome: Int = 0
     @Published var pathWasChosen: Bool = false
     @Published var needGoldAlertTriggered:Bool = false
     @Published var itemAlreadyEquippedAlertTriggered:Bool = false
-   @Published var gold: Int = 100
-    var health: Int = 100
+    @Published var gold: Int = 100
+    @Published var playerInventory: [WeaponInventoryItem] = []
+    @Published var playerHealthInventory: [HealthInventoryItem] = []
+    @Published var boughtItemAlert:Bool = false
+    
+   @Published var health: Int = 100
+
+
     var inventory: [WeaponInventoryItem] = [
         WeaponInventoryItem(name: "Mace", price: 45, power: 10),
         WeaponInventoryItem(name: "Axe", price: 55, power: 12),
         WeaponInventoryItem(name: "Kitana", price: 70, power: 20),
-
+        
     ]
-    var healthInventory: [HealthInventoryItem] = [HealthInventoryItem(name: "Apple", price: 25, healthBoost: 10), HealthInventoryItem(name: "Chicken Soup", price: 50, healthBoost: 25)]
-    var playerInventory: [WeaponInventoryItem] = []
-    var playerHealthInventory: [HealthInventoryItem] = []
-   @Published var boughtItemAlert:Bool = false
-  
+    var healthInventory: [HealthInventoryItem] = [HealthInventoryItem(name: "Apple", price: 25, healthBoost: 10),
+                                                  HealthInventoryItem(name: "Chicken Soup", price: 50, healthBoost: 25)]
+    func receiveAttack(damage: Int) {
+           health -= damage
+           print(health)
+       }
     
-    func sellItem(item: any InventoryItem){
-        if playerInventory.contains(where: { $0.id == item.id }) {
-            if let index = playerInventory.firstIndex(where: { $0.id == item.id }) {
-                 gold += item.price
-                 playerInventory.remove(at: index)
-             }
-        } else if playerHealthInventory.contains(where: { $0.id == item.id }) {
-            if let index = playerHealthInventory.firstIndex(where: { $0.id == item.id }) {
-                 gold += item.price
-                 playerHealthInventory.remove(at: index)
-             }
-         }
+    func sellItem(item: any InventoryItem) {
+        if let index = playerHealthInventory.firstIndex(where: { $0.id == item.id }) {
+            if playerHealthInventory[index].countOfItem > 1 {
+                playerHealthInventory[index].countOfItem -= 1
+                gold += item.price
+                print("Sold item and decreased the amount")
+            } else {
+                gold += item.price
+                print("Removed the item from the inventory")
+                playerHealthInventory.remove(at: index)
+            }
+        } else{
+            if let index = playerInventory.firstIndex(where: {$0.id == item.id}){
+                if playerInventory[index].countOfItem > 1 {
+                    playerInventory[index].countOfItem -= 1
+                    gold += item.price
+                    print("Sold item and decreased the amount")
+                } else {
+                    gold += item.price
+                    print("Removed the item from the inventory")
+                    playerInventory.remove(at: index)
+                }
+            }
+        }
+    }
+    
+    func useHealthItem(item:HealthInventoryItem){
+        if let index = playerHealthInventory.firstIndex(where: {$0.id == item.id}){
+            if playerHealthInventory[index].countOfItem > 1 {
+                playerHealthInventory[index].countOfItem -= 1
+                health += item.healthBoost
+                print("item used. Health is now \(health) ")
+            }
+            else {
+                health += item.healthBoost
+                playerHealthInventory.remove(at: index)
+                print("item used. Health is now \(health) ")
+            }
+        }
     }
 
+    func rollDice(){
+        let num1 = Int.random(in: 1..<6)
+        let num2 = Int.random(in: 1..<6)
+        diceOutcome =  num1 + num2
+        
+    }
+    
     func purchaseItem(item:WeaponInventoryItem){
-        if (gold > item.price && !playerInventory.contains(item)){
+        if (gold >= item.price && !playerInventory.contains(item)){
             gold -= item.price
+            print("\(gold)")
             playerInventory.append(item)
             print(playerInventory)
             boughtItemAlert = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
                 self.boughtItemAlert = false
             }
-        } else if (gold > item.price && playerInventory.contains(item)){
+        }
+        else if (gold > item.price && playerInventory.contains(item)){
             itemAlreadyEquippedAlertTriggered = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.itemAlreadyEquippedAlertTriggered = false
             }
             print("Cannot purchase item that is already equiped.")
         }
-      else  {
+        else  {
             needGoldAlertTriggered = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.needGoldAlertTriggered = false
@@ -106,32 +159,7 @@ class BountyHunterViewModel: ObservableObject{
     }
     
     
-//    func purchaseHealthItem(item:HealthInventoryItem){
-//        if (gold > item.price && !playerHealthInventory.contains(item)){
-//            gold -= item.price
-//            item.countOfItem += 1
-//            playerHealthInventory.append(item)
-//            print(playerHealthInventory)
-//            boughtItemAlert = true
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-//                self.boughtItemAlert = false
-//            }
-//        }
-//        else if let existingItemIndex = playerHealthInventory.firstIndex(where: { $0.id == item.id }) {
-//            if (gold >= item.price) {
-//                gold -= item.price
-//                playerHealthInventory[existingItemIndex].countOfItem += 1
-//                print("\(playerHealthInventory[existingItemIndex].countOfItem) in bag")
-//            }
-//        }
-//      else  {
-//            needGoldAlertTriggered = true
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-//                self.needGoldAlertTriggered = false
-//            }
-//            print("Need More Gold")
-//        }
-//    }
+    
     func purchaseHealthItem(item: HealthInventoryItem) {
         if gold >= item.price {
             if let existingItemIndex = playerHealthInventory.firstIndex(where: { $0.id == item.id }) {
@@ -156,7 +184,7 @@ class BountyHunterViewModel: ObservableObject{
             print("Need More Gold")
         }
     }
-
+    
     
     @Published var chosenPath: Int = 0
     

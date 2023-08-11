@@ -8,7 +8,7 @@
 import SwiftUI
 //TabView for different type of objects?
 struct ShopView: View {
-    @StateObject var viewModel: BountyHunterViewModel
+    @ObservedObject var viewModel: BountyHunterViewModel
     @Environment(\.dismiss) var dismiss
     var body: some View {
         ZStack {
@@ -105,6 +105,9 @@ struct ShopView: View {
                                                 Text("Buy").foregroundColor(Color("CallToActionColor"))
                                             }
                                             Spacer()
+
+                                           
+                                            
                                         }
                                         
                                     }

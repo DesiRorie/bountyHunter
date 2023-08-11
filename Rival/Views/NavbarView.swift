@@ -32,7 +32,7 @@ struct NavbarView: View {
 
             
         }.font(.custom("PressStart2P-Regular", size: 15))
-            .frame(height: 150)
+            .frame(height: 75)
             .fullScreenCover(isPresented: $isShopSheetPresented) {
                 ShopView(viewModel: viewModel).edgesIgnoringSafeArea(.all)
             }

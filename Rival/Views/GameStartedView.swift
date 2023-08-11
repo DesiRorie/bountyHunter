@@ -14,7 +14,10 @@ struct GameStartedView: View {
             if viewModel.pathWasChosen{
                 VStack{
                     NavbarView(viewModel: viewModel).foregroundColor(.white)
-                    Spacer().frame(height: 400)
+//                    Spacer().frame(height: 400)
+                    GamePlayingView(viewModel: viewModel)
+                        
+                    
                 }
             
         }
@@ -30,7 +33,7 @@ struct GameStartedView: View {
                 Spacer()
                 VStack{
                     if viewModel.pathWasChosen {
-                        Text("Chosen")
+                        Text("Chosen").foregroundColor(.white)
                     }
                     
                     Button("Dragon King") {

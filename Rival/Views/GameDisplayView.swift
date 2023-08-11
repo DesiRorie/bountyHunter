@@ -50,7 +50,7 @@ struct GameDisplayView: View {
                 
             }
         }.ignoresSafeArea(.all)
-            .frame(width: 400, height: 450)
+            .frame(width: 400, height: 650)
             .cornerRadius(25)
     }
 }

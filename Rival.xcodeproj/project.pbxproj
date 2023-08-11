@@ -24,6 +24,7 @@
 		C2AC0B992A82CB8200B26F47 /* WeaponsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B982A82CB8200B26F47 /* WeaponsView.swift */; };
 		C2AC0B9B2A82CBA100B26F47 /* GoldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B9A2A82CBA100B26F47 /* GoldView.swift */; };
 		C2AC0B9D2A82CBAE00B26F47 /* TravelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AC0B9C2A82CBAE00B26F47 /* TravelView.swift */; };
+		C2F1C1E22A856FA100370826 /* GamePlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F1C1E12A856FA100370826 /* GamePlayingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		C2AC0B982A82CB8200B26F47 /* WeaponsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponsView.swift; sourceTree = "<group>"; };
 		C2AC0B9A2A82CBA100B26F47 /* GoldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldView.swift; sourceTree = "<group>"; };
 		C2AC0B9C2A82CBAE00B26F47 /* TravelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelView.swift; sourceTree = "<group>"; };
+		C2F1C1E12A856FA100370826 /* GamePlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				C2AC0B982A82CB8200B26F47 /* WeaponsView.swift */,
 				C2AC0B9A2A82CBA100B26F47 /* GoldView.swift */,
 				C2AC0B9C2A82CBAE00B26F47 /* TravelView.swift */,
+				C2F1C1E12A856FA100370826 /* GamePlayingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				C2AC0B912A827A5A00B26F47 /* NavbarView.swift in Sources */,
 				C2AC0B8B2A81DC6C00B26F47 /* TestView.swift in Sources */,
 				C2AC0B852A81AF6100B26F47 /* OnboardingView.swift in Sources */,
+				C2F1C1E22A856FA100370826 /* GamePlayingView.swift in Sources */,
 				C26EAB362A7B39330073CE63 /* RivalApp.swift in Sources */,
 				C2AC0B932A82A97E00B26F47 /* ShopView.swift in Sources */,
 				C2AC0B872A81CB0E00B26F47 /* GameDisplayView.swift in Sources */,

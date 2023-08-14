@@ -14,7 +14,7 @@ struct GameStartedView: View {
             if viewModel.pathWasChosen{
                 VStack{
                     NavbarView(viewModel: viewModel).foregroundColor(.white)
-//                    Spacer().frame(height: 400)
+
                     GamePlayingView(viewModel: viewModel)
                         
                     

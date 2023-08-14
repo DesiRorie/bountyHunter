@@ -5,6 +5,9 @@
 //  Created by Desi Rorie on 8/8/23.
 //
 
+
+
+// Fix the scaling for the power of the dragon or the player
 import Foundation
 protocol InventoryItem: Hashable {
     var name: String { get }
@@ -40,10 +43,16 @@ struct DragonKing: Villain {
     var villainHealth = 200
     var power = 25
     
-
-    mutating func attackPlayer(in viewModel: inout BountyHunterViewModel) {
+    
+    mutating func attackPlayer(in viewModel: BountyHunterViewModel) {
         let damage = min(power, viewModel.health)
-        viewModel.receiveAttack(damage: damage)
+        var randomNumber = Int.random(in: 0..<100)
+        if randomNumber.isMultiple(of: 2){
+            viewModel.receiveAttack(damage: damage)
+        }else{
+            print("Dragon Missed")
+        }
+        
         
         print("Dragon King attacked the player for \(damage) damage!")
     }
@@ -58,18 +67,20 @@ class BountyHunterViewModel: ObservableObject{
         print("Game Model Closed")
     }
     var gameIsStarted: Bool =  false
+    @Published var playerTurn : Bool = true
     @Published var diceOutcome: Int = 0
     @Published var pathWasChosen: Bool = false
     @Published var needGoldAlertTriggered:Bool = false
     @Published var itemAlreadyEquippedAlertTriggered:Bool = false
-    @Published var gold: Int = 100
+    @Published var gold: Int = 200
     @Published var playerInventory: [WeaponInventoryItem] = []
     @Published var playerHealthInventory: [HealthInventoryItem] = []
     @Published var boughtItemAlert:Bool = false
+    @Published var health: Int = 100
+    @Published var handPower: Int = 5
+    @Published var equippedItem: WeaponInventoryItem = WeaponInventoryItem(name: "Fist", price: 0, power: 5)
+    @Published var dragon = DragonKing()
     
-   @Published var health: Int = 100
-
-
     var inventory: [WeaponInventoryItem] = [
         WeaponInventoryItem(name: "Mace", price: 45, power: 10),
         WeaponInventoryItem(name: "Axe", price: 55, power: 12),
@@ -77,11 +88,18 @@ class BountyHunterViewModel: ObservableObject{
         
     ]
     var healthInventory: [HealthInventoryItem] = [HealthInventoryItem(name: "Apple", price: 25, healthBoost: 10),
-                                                  HealthInventoryItem(name: "Chicken Soup", price: 50, healthBoost: 25)]
-    func receiveAttack(damage: Int) {
-           health -= damage
-           print(health)
-       }
+                                                  HealthInventoryItem(name: "Soup", price: 50, healthBoost: 25)]
+    func dragonAttack() {
+        if !playerTurn {
+            dragon.attackPlayer(in: self) // Call Dragon's attackPlayer method
+        }
+    }
+
+   func receiveAttack(damage: Int) {
+    
+    health -= damage
+        print(health)
+    }
     
     func sellItem(item: any InventoryItem) {
         if let index = playerHealthInventory.firstIndex(where: { $0.id == item.id }) {
@@ -123,7 +141,6 @@ class BountyHunterViewModel: ObservableObject{
             }
         }
     }
-
     func rollDice(){
         let num1 = Int.random(in: 1..<6)
         let num2 = Int.random(in: 1..<6)

@@ -24,14 +24,39 @@ struct TravelView: View {
 
                     Spacer()
                 }
-                Text("TRAVEL")
-                    .font(.custom("PressStart2P-Regular", size: 30))
-                
-                    .foregroundColor(Color("CallToActionColor"))
+                HStack {
+                    Text("PLAYER")
+                        .font(.custom("PressStart2P-Regular", size: 30))
+                        
+                    
+                        .foregroundColor(Color("CallToActionColor"))
                     .offset(y:50)
+                }
+                Spacer()
+                VStack(alignment: .leading,spacing: 50){
+                    VStack(alignment: .leading,spacing: 50) {
+                        HStack{
+                            Text("Equipped Weapon - \(viewModel.equippedItem.name)").foregroundColor(.white).font(.custom("PressStart2P-Regular", size: 15))
+                        }
+                        HStack{
+                            Text("Power - \(viewModel.equippedItem.power)").foregroundColor(.white).font(.custom("PressStart2P-Regular", size: 15))
+                        }
+                    }
+                    VStack(alignment: .leading,spacing: 55){
+                        HStack{
+                           Text("Health - ").foregroundColor(.white).font(.custom("PressStart2P-Regular", size: 15))
+                            Text("\(viewModel.health)").foregroundColor(.white).font(.custom("PressStart2P-Regular", size: 15))
+                        }
+                        HStack{
+                            Text("Fist Strength - \(viewModel.handPower)").foregroundColor(.white).font(.custom("PressStart2P-Regular", size: 15))
+                            Spacer()
+                        }
+                    }
+                }.padding()
+                
                 Spacer()
             }
-        }
+           }.edgesIgnoringSafeArea(.all)
     }
 }
 

@@ -57,6 +57,7 @@ struct ShopView: View {
                                         Spacer()
                                         Button {
                                             viewModel.purchaseItem(item: item)
+                                            print(viewModel.dragon.villainHealth)
                                         } label: {
                                             Text("Buy").foregroundColor(Color("CallToActionColor"))
                                         }
@@ -101,6 +102,7 @@ struct ShopView: View {
                                             Spacer()
                                             Button {
                                                 viewModel.purchaseHealthItem(item: item)
+                                                print(viewModel.dragon.villainHealth)
                                             } label: {
                                                 Text("Buy").foregroundColor(Color("CallToActionColor"))
                                             }
@@ -135,6 +137,9 @@ struct ShopView: View {
             }
             
         }.ignoresSafeArea()
+            .onAppear{
+                print(viewModel.dragon.villainHealth)
+            }
     }
 }
 

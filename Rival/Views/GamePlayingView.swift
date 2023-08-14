@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct GamePlayingView: View {
-    @ObservedObject var viewModel = BountyHunterViewModel()
+    @ObservedObject var viewModel: BountyHunterViewModel
     var dragonKing = DragonKing()
     var body: some View {
         VStack{
             Spacer()
-            
-            Button {
-              viewModel.rollDice()
-                
-                viewModel.receiveAttack(damage: dragonKing.power)
+            Image("dragonKing")
+                .resizable()
+                .scaledToFit()
+            .navigationBarBackButtonHidden()
+            NavigationLink {
+                DragonScreen(viewModel: viewModel)
             } label: {
-                Text("ROLL DICE")
+                Text("START FIGHT")
                     .foregroundColor(.white).bold()
                     .font(.custom("PressStart2P-Regular", size: 20))
             }
+
+           
             if (viewModel.diceOutcome > 0) {
                 Text("Your number is \(viewModel.diceOutcome)").foregroundColor(.red)
             }
@@ -35,6 +38,6 @@ struct GamePlayingView: View {
 
 struct GamePlayingView_Previews: PreviewProvider {
     static var previews: some View {
-        GamePlayingView()
+        GamePlayingView(viewModel: BountyHunterViewModel())
     }
 }

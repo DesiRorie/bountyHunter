@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C26AF65F2A87122B0012521C /* DragonScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26AF65E2A87122B0012521C /* DragonScreen.swift */; };
 		C26EAB362A7B39330073CE63 /* RivalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26EAB352A7B39330073CE63 /* RivalApp.swift */; };
 		C26EAB382A7B39330073CE63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26EAB372A7B39330073CE63 /* ContentView.swift */; };
 		C26EAB3A2A7B39340073CE63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C26EAB392A7B39340073CE63 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C26AF65E2A87122B0012521C /* DragonScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonScreen.swift; sourceTree = "<group>"; };
 		C26EAB322A7B39330073CE63 /* Rival.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rival.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26EAB352A7B39330073CE63 /* RivalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RivalApp.swift; sourceTree = "<group>"; };
 		C26EAB372A7B39330073CE63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C26AF65D2A8712190012521C /* VillainScreens */ = {
+			isa = PBXGroup;
+			children = (
+				C26AF65E2A87122B0012521C /* DragonScreen.swift */,
+			);
+			path = VillainScreens;
+			sourceTree = "<group>";
+		};
 		C26EAB292A7B39330073CE63 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		C26EAB342A7B39330073CE63 /* Rival */ = {
 			isa = PBXGroup;
 			children = (
+				C26AF65D2A8712190012521C /* VillainScreens */,
 				C2AC0B972A82ABFB00B26F47 /* Info.plist */,
 				C2AC0B942A82AB8800B26F47 /* Font */,
 				C26EAB4C2A7B43080073CE63 /* ViewModels */,
@@ -222,6 +233,7 @@
 				C26EAB422A7B39340073CE63 /* Rival.xcdatamodeld in Sources */,
 				C26EAB3F2A7B39340073CE63 /* Persistence.swift in Sources */,
 				C26EAB382A7B39330073CE63 /* ContentView.swift in Sources */,
+				C26AF65F2A87122B0012521C /* DragonScreen.swift in Sources */,
 				C2AC0B912A827A5A00B26F47 /* NavbarView.swift in Sources */,
 				C2AC0B8B2A81DC6C00B26F47 /* TestView.swift in Sources */,
 				C2AC0B852A81AF6100B26F47 /* OnboardingView.swift in Sources */,
@@ -364,8 +376,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,8 +405,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

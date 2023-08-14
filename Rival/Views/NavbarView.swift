@@ -25,7 +25,7 @@ struct NavbarView: View {
                 isGoldSheetPresented = true
             }
 
-            Button("TRAVEL") {
+            Button("PLAYER") {
                 isTravelSheetPresented = true
             }
 

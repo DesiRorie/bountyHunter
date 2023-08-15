@@ -18,7 +18,7 @@ struct GameStartedView: View {
                     GamePlayingView(viewModel: viewModel)
                         
                     
-                }
+                }.navigationBarBackButtonHidden(true)
             
         }
         else{

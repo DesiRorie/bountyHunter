@@ -48,13 +48,18 @@ struct DragonKing: Villain {
         let damage = min(power, viewModel.health)
         var randomNumber = Int.random(in: 0..<100)
         if randomNumber.isMultiple(of: 2){
+            print("Dragon King attacked the player for \(damage) damage!")
             viewModel.receiveAttack(damage: damage)
         }else{
+            viewModel.villainMissed = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                viewModel.villainMissed = false
+            }
             print("Dragon Missed")
         }
         
         
-        print("Dragon King attacked the player for \(damage) damage!")
+       
     }
 }
 
@@ -67,6 +72,7 @@ class BountyHunterViewModel: ObservableObject{
         print("Game Model Closed")
     }
     var gameIsStarted: Bool =  false
+    @Published var villainMissed: Bool = false
     @Published var playerTurn : Bool = true
     @Published var diceOutcome: Int = 0
     @Published var pathWasChosen: Bool = false
@@ -90,9 +96,10 @@ class BountyHunterViewModel: ObservableObject{
     var healthInventory: [HealthInventoryItem] = [HealthInventoryItem(name: "Apple", price: 25, healthBoost: 10),
                                                   HealthInventoryItem(name: "Soup", price: 50, healthBoost: 25)]
     func dragonAttack() {
-        if !playerTurn {
-            dragon.attackPlayer(in: self) // Call Dragon's attackPlayer method
-        }
+        dragon.attackPlayer(in: self)
+//        if !playerTurn {
+//            dragon.attackPlayer(in: self) // Call Dragon's attackPlayer method
+//        }
     }
 
    func receiveAttack(damage: Int) {

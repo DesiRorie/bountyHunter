@@ -9,12 +9,28 @@ import SwiftUI
 
 struct DragonScreen: View {
     @ObservedObject var viewModel: BountyHunterViewModel
+    @Environment(\.dismiss) private var dismiss
     
     
     var body: some View {
         ZStack {
             Color.black
             VStack{
+                VStack{
+                    Spacer().frame(height: 70)
+                    HStack{
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("BACK").foregroundColor(.white)
+                                .font(.custom("PressStart2P-Regular", size: 15))
+                        }
+
+                      
+                        Spacer().frame(width: 320)
+                    }
+                }
+                
                 HStack {
                     Text("DRAGON").foregroundColor(.red)          .font(.custom("PressStart2P-Regular", size: 25))
                         .offset(y: 50)
@@ -33,7 +49,19 @@ struct DragonScreen: View {
                     }
                 }
                 Spacer()
-                
+             
+                Image("dragonKing")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
+                    .offset(y:-20)
+//                Spacer()
+                HStack{
+                    viewModel.villainMissed ? Text("Dragon Missed!").foregroundColor(.white) : Text("")
+                }.frame(height: 20)
+                    .font(.custom("PressStart2P-Regular", size: 15))
+                    .foregroundColor(.white)
+                    .padding(.vertical)
                 
                 VStack(spacing: 10) {
                     ZStack {RoundedRectangle(cornerRadius: 25)
@@ -44,14 +72,19 @@ struct DragonScreen: View {
                             if viewModel.playerTurn{
                                 if (viewModel.dragon.villainHealth - viewModel.equippedItem.power < 0 ){
                                     viewModel.dragon.villainHealth = 0
-                                    viewModel.playerTurn = false
+//                                    viewModel.playerTurn = false
                                 }else{
                                     viewModel.dragon.villainHealth -= viewModel.equippedItem.power
-                                    viewModel.playerTurn = false
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                        
+                                        viewModel.dragonAttack()
+                                    }
+//                                    viewModel.playerTurn = false
                                 }
                             } else{
-                                viewModel.dragonAttack()
-                                viewModel.playerTurn = true
+//                                viewModel.dragonAttack()
+//                                viewModel.playerTurn = true
                             }
                             
                             
@@ -79,11 +112,12 @@ struct DragonScreen: View {
                         }
                     }
                 }
-                Spacer().frame(height: 100)
+                Spacer().frame(height: 40)
                 
                 
             }
         }.ignoresSafeArea()
+            .navigationBarBackButtonHidden(true)
             .onAppear{
                 print(viewModel.dragon.villainHealth)
             }

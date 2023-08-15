@@ -16,14 +16,15 @@ struct GamePlayingView: View {
             Image("dragonKing")
                 .resizable()
                 .scaledToFit()
-            .navigationBarBackButtonHidden()
+            .navigationBarBackButtonHidden(true)
             NavigationLink {
                 DragonScreen(viewModel: viewModel)
             } label: {
-                Text("START FIGHT")
+                Text("FIGHT")
                     .foregroundColor(.white).bold()
                     .font(.custom("PressStart2P-Regular", size: 20))
-            }
+            }   .navigationBarBackButtonHidden(true)
+            
 
            
             if (viewModel.diceOutcome > 0) {
@@ -33,6 +34,7 @@ struct GamePlayingView: View {
             Spacer()
         }.frame(width: 400, height: 600)
             .background(.black)
+            .navigationBarBackButtonHidden()
     }
 }
 

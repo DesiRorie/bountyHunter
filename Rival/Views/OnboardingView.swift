@@ -13,6 +13,7 @@ struct OnboardingView: View {
             ZStack {
                 Color("MainColor")
                 VStack{
+                    
                     VStack{
                         Text("Bounty Hunter")
                             .foregroundColor(Color("CallToActionColor"))
@@ -28,6 +29,7 @@ struct OnboardingView: View {
                     }
                     Spacer().frame(height: 150)
                 }
+                .navigationBarBackButtonHidden(true)
                 .offset(y:50)
                 
             }.ignoresSafeArea(.all)
